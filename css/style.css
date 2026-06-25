@@ -212,35 +212,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hero-lede { font-size: clamp(17px, 1.6vw, 20px); color: var(--ink-soft); max-width: 38ch; margin: 0 0 32px; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-block-end: 44px; }
 
-.hero-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; border-block-start: 1px solid var(--line); padding-block-start: 28px; }
-.hero-facts li { display: flex; flex-direction: column; gap: 4px; }
-.hero-facts strong { font-family: var(--font-display); font-size: clamp(26px, 3.2vw, 38px); font-weight: 600; color: var(--teal-700); line-height: 1; }
-.hero-facts span { font-size: 13px; color: var(--ink-faint); line-height: 1.4; }
-
 .hero-art { position: relative; margin: 0; }
-.hero-art img {
-  width: 100%; aspect-ratio: 4 / 4.4; object-fit: cover;
-  border-radius: var(--r-xl) var(--r-xl) var(--r-xl) 80px;
-  box-shadow: var(--shadow-soft); background: var(--sand-200);
-}
-html[dir="rtl"] .hero-art img { border-radius: var(--r-xl) var(--r-xl) 80px var(--r-xl); }
-.hero-art-cap {
-  position: absolute; inset-block-end: 22px; inset-inline-start: 22px; inset-inline-end: 22px;
-  background: rgba(122,16,25,.82); color: #fff; backdrop-filter: blur(4px);
-  font-family: var(--font-display); font-style: italic; font-size: 16px;
-  padding: 12px 18px; border-radius: var(--r-md);
-}
-
-.hero-scroll { position: absolute; inset-block-end: 14px; inset-inline-start: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--ink-faint); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; z-index: 1; }
-.scroll-line { width: 1px; height: 36px; background: linear-gradient(var(--ink-faint), transparent); animation: scrollPulse 2s ease-in-out infinite; }
-@keyframes scrollPulse { 0%,100% { transform: scaleY(.5); opacity:.4; } 50% { transform: scaleY(1); opacity:1; } }
-@media (prefers-reduced-motion: reduce) { .scroll-line { animation: none; } }
 
 /* ============================================================
-   TRUST STRIP
+   MARQUEE (base rules, shared by the partners finale)
    ============================================================ */
-.trust { padding-block: 36px; border-block: 1px solid var(--line); background: var(--sand-100); }
-.trust-label { text-align: center; font-size: 13px; color: var(--ink-faint); letter-spacing: .04em; margin: 0 0 22px; }
 .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
 .marquee-track { display: flex; gap: 56px; width: max-content; animation: scroll-x 42s linear infinite; }
 .marquee:hover .marquee-track { animation-play-state: paused; }
@@ -328,20 +304,6 @@ html[dir="rtl"] .marquee-track { animation-direction: reverse; }
 .svc-meta-row span { color: var(--ink-faint); }
 
 /* ============================================================
-   HOW IT WORKS
-   ============================================================ */
-.how { padding-block: clamp(64px, 9vw, 120px); }
-.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; counter-reset: s; }
-.step { position: relative; padding-block-start: 14px; }
-.step-num {
-  font-family: var(--font-display); font-size: 60px; font-weight: 600; color: var(--sand-300);
-  line-height: 1; display: block; margin-block-end: 14px; transition: color .3s var(--ease);
-}
-.step:hover .step-num { color: var(--coral-500); }
-.step h3 { font-size: 21px; color: var(--teal-900); margin: 0 0 8px; }
-.step p { font-size: 15px; color: var(--ink-soft); }
-
-/* ============================================================
    TIERS
    ============================================================ */
 .tiers { padding-block: clamp(64px, 9vw, 110px); background: var(--sand-100); }
@@ -372,34 +334,6 @@ html[dir="rtl"] .marquee-track { animation-direction: reverse; }
 .tier .btn-block { margin-block-start: auto; }
 .tier-feature .btn-ghost { color: #fff; border-color: rgba(255,255,255,.45); }
 .tier-feature .btn-ghost:hover { background: #fff; color: var(--teal-700); border-color: #fff; }
-
-/* ============================================================
-   VOICE / POLICY
-   ============================================================ */
-.voice { padding-block: clamp(70px, 10vw, 130px); background: var(--teal-800); color: #fff; }
-.voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(34px, 5vw, 72px); align-items: center; }
-.voice-copy h2 { font-size: clamp(30px, 4vw, 46px); color: #fff; margin: 0 0 20px; }
-.voice-copy p { color: rgba(255,255,255,.82); font-size: 18px; }
-.voice-note { font-family: var(--font-display); font-style: italic; color: var(--teal-300); margin-block-start: 18px; font-size: 16px; }
-.agenda { display: grid; gap: 2px; }
-.agenda li {
-  display: grid; grid-template-columns: 44px auto; gap: 14px; align-items: baseline;
-  padding: 16px 18px; border-radius: var(--r-sm); font-size: 16px; color: rgba(255,255,255,.92);
-  transition: background .25s var(--ease), transform .25s var(--ease);
-}
-.agenda li span { font-family: var(--font-display); font-weight: 600; color: var(--teal-300); font-size: 15px; }
-.agenda li:hover { background: rgba(255,255,255,.07); transform: translateX(6px); }
-html[dir="rtl"] .agenda li:hover { transform: translateX(-6px); }
-
-/* ============================================================
-   JOIN
-   ============================================================ */
-.join { padding-block: clamp(72px, 10vw, 130px); text-align: start; }
-.join-inner { max-width: 56ch; margin-inline: 0; }
-.join-inner h2 { font-size: clamp(32px, 5vw, 56px); color: var(--teal-900); margin: 0 0 22px; }
-.join-inner > p { font-size: clamp(17px, 1.8vw, 21px); color: var(--ink-soft); margin: 0 0 36px; }
-.join-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: flex-start; margin-block-end: 28px; }
-.join-fine { font-size: 13px; color: var(--ink-faint); }
 
 /* ============================================================
    FOOTER
@@ -476,40 +410,6 @@ html[dir="rtl"] .agenda li:hover { transform: translateX(-6px); }
 @keyframes tileWiggle { 0%,100% { transform: rotate(0) scale(1); } 30% { transform: rotate(-7deg) scale(1.08); } 65% { transform: rotate(5deg) scale(1.04); } }
 @media (prefers-reduced-motion: reduce) { .inde-logo .lt { animation: none !important; } }
 
-/* ---- seasonal hero (summer <-> winter, all year round) ---- */
-.hero-art .season-stack {
-  position: relative; width: 100%; aspect-ratio: 5 / 4; overflow: hidden;
-  border-radius: var(--r-xl) var(--r-xl) var(--r-xl) 80px;
-  box-shadow: var(--shadow-soft); background: var(--sand-200);
-}
-html[dir="rtl"] .hero-art .season-stack { border-radius: var(--r-xl) var(--r-xl) 80px var(--r-xl); }
-.hero-art .season { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; border-radius: 0; box-shadow: none; }
-.season-winter { opacity: 0; animation: winterPhase 22s ease-in-out infinite; }
-.flakes {
-  position: absolute; inset: 0; pointer-events: none; opacity: 0;
-  background-image:
-    radial-gradient(2px 2px at 18% 12%, #fff, transparent),
-    radial-gradient(2px 2px at 62% 26%, #fff, transparent),
-    radial-gradient(1.6px 1.6px at 82% 48%, #fff, transparent),
-    radial-gradient(2px 2px at 34% 66%, #fff, transparent),
-    radial-gradient(1.6px 1.6px at 52% 88%, #fff, transparent),
-    radial-gradient(1.6px 1.6px at 8% 80%, #fff, transparent);
-  background-size: 100% 150px;
-  animation: snowFall 7s linear infinite, winterPhase 22s ease-in-out infinite;
-}
-.sunglow {
-  position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen;
-  background: radial-gradient(58% 48% at 78% 20%, rgba(255,206,120,.55), transparent 70%);
-  animation: summerPhase 22s ease-in-out infinite;
-}
-@keyframes winterPhase { 0%,38% { opacity: 0; } 50%,88% { opacity: 1; } 100% { opacity: 0; } }
-@keyframes summerPhase { 0%,38% { opacity: .85; } 50%,88% { opacity: 0; } 100% { opacity: .85; } }
-@keyframes snowFall { from { background-position-y: 0; } to { background-position-y: 150px; } }
-@media (prefers-reduced-motion: reduce) {
-  .season-winter, .flakes { animation: none; opacity: 0; }
-  .sunglow { animation: none; opacity: .7; }
-}
-
 /* ---- level chips (the membership ladder colour code) ---- */
 .lvl-chip, .tier-lvl { font-family: var(--font-mono); font-weight: 500; font-size: 11px; letter-spacing: .04em; padding: 4px 10px; border-radius: 100px; white-space: nowrap; display: inline-block; line-height: 1.25; }
 .lvl-free { background: #E6F2EA; color: #276945; }
@@ -585,16 +485,6 @@ html[dir="rtl"] .buddy-art img { border-radius: 80px var(--r-xl) var(--r-xl) var
 .foot-cvr { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: rgba(255,255,255,.55); margin-block-start: 16px; }
 .tier-talk { font-size: 19px; }
 
-/* ---- FAQ ---- */
-.faq { padding-block: clamp(56px, 8vw, 100px); }
-.faq-grid { display: grid; gap: 12px; max-width: 80ch; }
-.faq-item { background: var(--sand-50); border: 1px solid var(--line); border-radius: var(--r-md); padding: 4px 22px; }
-.faq-item summary { font-family: var(--font-display); font-size: 19px; color: var(--teal-900); cursor: pointer; padding: 16px 0; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary::after { content: "+"; color: var(--coral-500); font-weight: 600; font-family: var(--font-body); }
-.faq-item[open] summary::after { content: "\2212"; }
-.faq-item p { font-size: 15px; color: var(--ink-soft); padding-block-end: 18px; margin: 0; }
-
 /* ---- responsive additions ---- */
 @media (max-width: 940px) {
   .buddy-grid { grid-template-columns: 1fr; }
@@ -650,9 +540,6 @@ body::before {
   background: linear-gradient(180deg, rgba(42,26,28,0.03), rgba(42,26,28,0)); opacity: 0; transition: opacity .3s var(--ease);
 }
 .site-nav.scrolled::after { opacity: 1; }
-
-/* voice band: a warm corner wash for depth on the dark band */
-.voice { background: radial-gradient(80% 100% at 0% 0%, rgba(241,20,20,0.16), rgba(241,20,20,0) 55%), var(--teal-800); }
 
 /* ============================================================
    PARTNERS finale: two opposing full-width marquee rows
@@ -793,19 +680,7 @@ html[dir="rtl"] .flag-frame { border-radius: var(--r-xl) var(--r-xl) 80px var(--
 .hero-art.reveal .flag-frame { transform: scale(0.965); transition: transform 1s var(--ease); }
 .hero-art.reveal.in .flag-frame { transform: scale(1); }
 .flag-frame svg { display: block; width: 100%; height: 100%; }
-.flag-frame [id^="inde-hit-"] { cursor: pointer; }
-.flag-pp {
-  position: absolute; inset-block-end: 14px; inset-inline-end: 14px; z-index: 3;
-  width: 40px; height: 40px; border-radius: 50%; border: none; cursor: pointer;
-  display: grid; place-items: center; color: #fff; background: #3B7A57; font-size: 12px; line-height: 0;
-  box-shadow: 0 6px 16px -6px rgba(0,0,0,.5);
-  opacity: 0; transform: translateY(6px);
-  transition: opacity .25s var(--ease), transform .25s var(--ease), background .2s var(--ease);
-}
-.flag-embed:hover .flag-pp, .flag-pp:focus-visible { opacity: 1; transform: none; }
-.flag-pp:hover { background: #2F6448; }
 @media (prefers-reduced-motion: reduce) {
-  .flag-pp { opacity: 1; transform: none; transition: none; }
   .hero-art.reveal .flag-frame, .hero-art.reveal.in .flag-frame { transform: none !important; transition: none; }
 }
 
