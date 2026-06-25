@@ -60,7 +60,7 @@
   --r-lg: 22px;
   --r-xl: 32px;
 
-  --maxw: 1180px;
+  --maxw: 1280px;
   --pad: clamp(20px, 5vw, 64px);
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -394,11 +394,11 @@ html[dir="rtl"] .agenda li:hover { transform: translateX(-6px); }
 /* ============================================================
    JOIN
    ============================================================ */
-.join { padding-block: clamp(72px, 10vw, 130px); text-align: center; }
-.join-inner { max-width: 60ch; margin-inline: auto; }
+.join { padding-block: clamp(72px, 10vw, 130px); text-align: start; }
+.join-inner { max-width: 56ch; margin-inline: 0; }
 .join-inner h2 { font-size: clamp(32px, 5vw, 56px); color: var(--teal-900); margin: 0 0 22px; }
 .join-inner > p { font-size: clamp(17px, 1.8vw, 21px); color: var(--ink-soft); margin: 0 0 36px; }
-.join-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-block-end: 28px; }
+.join-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: flex-start; margin-block-end: 28px; }
 .join-fine { font-size: 13px; color: var(--ink-faint); }
 
 /* ============================================================

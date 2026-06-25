@@ -74,25 +74,25 @@
     var QUADS = {
       i: { hit: "inde-hit-i", scene: "social", base: [172, 232],
         parts: [
-          { base: [172, 148], stroke: { sp: [[0, 0], [0, -7.7], [0, -15.3], [0, -23], [0, -30.7], [0, -38.3], [0, -46]], w: [10, 38, 56, 60, 56, 38, 10] }, target: PERSON },
-          { base: [172, 232], stroke: stem(72, 70), target: PERSON },
-          { base: [172, 316], stroke: stem(84, 70), target: PERSON }
+          { base: [172, 146], stroke: { sp: [[0, 0], [0, -7], [0, -14], [0, -21], [0, -28], [0, -35], [0, -42]], w: [16, 44, 58, 60, 58, 44, 16] }, target: PERSON },
+          { base: [172, 232], stroke: stem(72, 58), target: PERSON },
+          { base: [172, 316], stroke: stem(84, 58), target: PERSON }
         ] },
       n: { hit: "inde-hit-n", scene: "swim", base: [707, 232],
         parts: [
-          { base: [642, 330], stroke: stem(150, 62), target: PERSON },
-          { base: [770, 330], stroke: { sp: [[0, 0], [0, -75], [0, -150], [-32, -178], [-64, -182], [-100, -170], [-128, -148]], w: [62, 62, 62, 60, 60, 60, 62] }, target: PERSON }
+          { base: [642, 330], stroke: stem(150, 58), target: PERSON },
+          { base: [770, 330], stroke: { sp: [[0, 0], [0, -78], [0, -150], [-30, -180], [-66, -186], [-102, -174], [-128, -150]], w: [58, 58, 58, 58, 58, 58, 58] }, target: PERSON }
         ] },
       d: { hit: "inde-hit-d", scene: "work", base: [172, 767],
         parts: [
-          { base: [150, 800], stroke: { sp: arcPts(0, 0, 60, 28, 332), w: [46, 46, 46, 46, 46, 46, 46] }, target: PERSON },
-          { base: [224, 880], stroke: stem(300, 58), target: DESK }
+          { base: [150, 800], stroke: { sp: arcPts(0, 0, 62, 26, 334), w: [54, 54, 54, 54, 54, 54, 54] }, target: PERSON },
+          { base: [222, 880], stroke: stem(300, 58), target: DESK }
         ] },
       e: { hit: "inde-hit-e", scene: "party", base: [707, 767],
         parts: [
-          { base: [648, 762], stroke: { sp: [[6, 0], [23, 0], [40, 0], [57, 0], [74, 0], [91, 0], [106, 0]], w: [44, 44, 44, 44, 44, 44, 44] }, target: PERSON },
-          { base: [648, 762], stroke: { sp: [[6, 2], [2, -32], [20, -56], [52, -66], [88, -58], [114, -34], [124, -4]], w: [44, 44, 44, 44, 44, 44, 44] }, target: PERSON },
-          { base: [648, 762], stroke: { sp: [[6, 2], [2, 34], [22, 58], [54, 66], [86, 58], [106, 38], [112, 22]], w: [44, 44, 44, 44, 44, 44, 44] }, target: PERSON }
+          { base: [648, 762], stroke: { sp: [[6, 0], [23, 0], [40, 0], [57, 0], [74, 0], [91, 0], [106, 0]], w: [50, 50, 50, 50, 50, 50, 50] }, target: PERSON },
+          { base: [648, 762], stroke: { sp: [[6, 2], [2, -32], [20, -56], [52, -66], [88, -58], [114, -34], [124, -4]], w: [50, 50, 50, 50, 50, 50, 50] }, target: PERSON },
+          { base: [648, 762], stroke: { sp: [[6, 2], [2, 34], [22, 58], [54, 66], [86, 58], [106, 38], [112, 22]], w: [50, 50, 50, 50, 50, 50, 50] }, target: PERSON }
         ] }
     };
 
