@@ -12,7 +12,7 @@ const PILLARS = [
     index: "01",
     title: "Settle in",
     tagline: "The first year, made less lonely.",
-    blurb: "Arriving is the hardest part. These help you find your feet, understand the system, and know you are not doing it alone.",
+    blurb: "Arriving is the hardest part. These help you find your feet, understand the system, and feel the ground steady under you, because you are not doing it alone.",
     img: "assets/img/settle.jpg",
     services: [
       {
@@ -30,7 +30,7 @@ const PILLARS = [
         name: "Paperwork Clinic",
         icon: "file-text",
         promise: "Bring the form you do not understand. Leave knowing what to do.",
-        get: "Drop-in help reading a letter, a contract, or an official form, and understanding what it asks and what happens next. We point you to the right office, we do not act as your lawyer.",
+        get: "Drop-in help reading a letter, a contract, or an official form, so you understand what it asks and what to do next. We help you see clearly and point you to the right office. This is practical guidance, not legal representation.",
         who: "Anyone stuck on Danish bureaucracy or an official letter.",
         format: "Group drop-in and short 1:1 slots",
         delivery: "Trained volunteers and partner advisers",
@@ -44,7 +44,7 @@ const PILLARS = [
     index: "02",
     title: "Work and earn",
     tagline: "Your career, protected and pushed forward.",
-    blurb: "The job market is where internationals lose the most ground. This pillar borrows the best of a Danish union and opens it to internationals who often miss it.",
+    blurb: "The job market is where internationals lose the most ground. This pillar takes the kind of career and contract support Danish unions are known for, and opens it to internationals who often go without it.",
     img: "assets/img/work.jpg",
     services: [
       {
@@ -59,10 +59,10 @@ const PILLARS = [
         status: "live"
       },
       {
-        name: "Contract and Rights Check",
+        name: "Contract Check",
         icon: "scale",
         promise: "Know what you are signing before you sign it.",
-        get: "A plain language read of your employment contract, your notice terms, your holiday and pension, and a heads up on anything unusual. General guidance to protect you, not formal legal representation.",
+        get: "A plain language read of your employment contract, your notice terms, your holiday and pension, and a clear heads up on anything unusual before you sign. Honest, practical guidance so you know what you are agreeing to. This is not formal legal representation.",
         who: "Anyone with a job offer or a contract they are unsure about.",
         format: "1:1 review plus a short written summary",
         delivery: "Pro-bono legal and HR professionals",

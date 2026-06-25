@@ -244,9 +244,12 @@
     var el = document.createElement("p");
     el.className = "svc-tally";
     el.innerHTML =
-      '<span class="t-strong">' + total + " services in all.</span>" +
+      '<span class="t-strong">' + total + " services in all</span>" +
+      '<span class="sr-only">. </span>' +
       '<span class="t-live"><span class="t-dot" aria-hidden="true"></span>' + live + " live today</span>" +
+      '<span class="sr-only">, </span>' +
       '<span class="t-building"><span class="t-dot" aria-hidden="true"></span>' + building + " building now</span>" +
+      '<span class="sr-only">. </span>' +
       "<span>Each card tells you which.</span>";
     nav.insertAdjacentElement("afterend", el);
   }
