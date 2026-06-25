@@ -333,7 +333,14 @@
 
     // ---------- the flag WAKES: assemble the wordmark, hold a beat, then come alive ----------
     var Q_GROUPS = { i: $("inde-Q-i"), n: $("inde-Q-n"), d: $("inde-Q-d"), e: $("inde-Q-e") };
-    if (willAnimate) { ["i", "n", "d", "e"].forEach(function (k) { if (Q_GROUPS[k]) Q_GROUPS[k].style.opacity = "0"; }); }
+    if (willAnimate) {
+      // hold each quadrant at its clean resting LETTER; the wordmark blooms in, then stays still (no cartoon scenes)
+      ["i", "n", "d", "e"].forEach(function (k) {
+        QUADS[k].tl.progress(0).pause();
+        QUADS[k].parts.forEach(function (p) { p.m.t = 1; p.render(); gsap.set(p.sceneG, { x: 0, y: 0, rotation: 0, scaleX: 1, scaleY: 1 }); });
+        if (Q_GROUPS[k]) Q_GROUPS[k].style.opacity = "0";
+      });
+    }
     var lifeStaggered = false;
     function startLife() {
       if (lifeStaggered) return; lifeStaggered = true;
@@ -349,7 +356,7 @@
         gsap.fromTo(g, { opacity: 0, scale: 0.35, svgOrigin: QUADS[k].base[0] + " " + QUADS[k].base[1] },
           { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.7)", delay: idx * 0.14 });
       });
-      gsap.delayedCall(1.7, startLife);   // ~0.8 bloom + the i..e stagger + a held wordmark beat
+      // still mark: the wordmark blooms in and holds. No cartoon scenes (design audit, "pro not cheap").
     }
 
     // ---------- view-gated: wake on first view, pause when off-screen (perf + battery) ----------
