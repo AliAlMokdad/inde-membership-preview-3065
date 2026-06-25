@@ -1,0 +1,9 @@
+# Earlier design-direction prototypes, kept locally for reference only
+direction-a-harbour/
+direction-b/
+direction-c/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.tmp
