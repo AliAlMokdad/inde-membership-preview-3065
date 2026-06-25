@@ -334,8 +334,10 @@
     // ---------- the flag WAKES: assemble the wordmark, hold a beat, then come alive ----------
     var Q_GROUPS = { i: $("inde-Q-i"), n: $("inde-Q-n"), d: $("inde-Q-d"), e: $("inde-Q-e") };
     if (willAnimate) {
-      // render each quadrant as its clean resting LETTER and keep it visible: a still, premium wordmark.
-      // No per-letter bloom (it froze mid-flight in background tabs and read as broken characters) and no cartoon scenes.
+      // FIRST PAINT IS ALWAYS A CLEAN, SOLID WORDMARK. Render each quadrant as its resting LETTER
+      // synchronously and hold its scene timeline paused at progress 0. There is no fragile entrance
+      // tween, so the flag can never be caught frozen mid-animation no matter how the tab loads.
+      // The living scenes are released later by startLife(), only once the flag is actually on screen.
       ["i", "n", "d", "e"].forEach(function (k) {
         QUADS[k].tl.progress(0).pause();
         QUADS[k].parts.forEach(function (p) { p.m.t = 1; p.render(); gsap.set(p.sceneG, { x: 0, y: 0, rotation: 0, scaleX: 1, scaleY: 1 }); });
@@ -352,9 +354,11 @@
     var entered = false;
     function wake() {
       if (entered) return; entered = true;
-      // the wordmark is already rendered as a still mark; just guarantee it is visible. The only entrance
-      // is the gentle CSS scale-settle on .flag-frame, which cannot freeze or break regardless of tab state.
+      // the solid wordmark is already on screen; guarantee it is visible, then bring it to life.
+      // startLife() releases the four scene loops (letters -> people living Danish scenes -> letters),
+      // phase-staggered so the quadrants drift out of sync and something is always mid-scene.
       ["i", "n", "d", "e"].forEach(function (k) { var g = Q_GROUPS[k]; if (g) { g.style.opacity = "1"; gsap.set(g, { opacity: 1, scale: 1 }); } });
+      startLife();
     }
 
     // ---------- view-gated: wake on first view, pause when off-screen (perf + battery) ----------
