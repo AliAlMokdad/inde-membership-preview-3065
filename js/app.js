@@ -60,7 +60,7 @@
               '<div class="svc-ico">' + svg(s.icon) + "</div>" +
               '<div class="svc-badges">' +
                 '<span class="lvl-chip lvl-' + s.level + '">' + TIER_LABELS[s.level] + "</span>" +
-                '<span class="badge badge-status ' + statusCls + '"><span class="sdot"></span>' + STATUS_LABELS[s.status] + "</span>" +
+                '<span class="badge badge-status ' + statusCls + '"><span class="sdot" aria-hidden="true"></span>' + STATUS_LABELS[s.status] + "</span>" +
               "</div>" +
             "</div>" +
             "<h3>" + s.name + "</h3>" +
@@ -112,7 +112,11 @@
       entries.forEach(function (e) {
         if (e.isIntersecting) {
           var el = e.target;
-          var sibs = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+          var sibs = 0;
+          if (el.parentElement) {
+            var rs = Array.prototype.filter.call(el.parentElement.children, function (c) { return c.classList && c.classList.contains("reveal"); });
+            sibs = Math.max(0, rs.indexOf(el));
+          }
           el.style.transitionDelay = Math.min(sibs * 70, 350) + "ms";
           el.classList.add("in");
           io.unobserve(el);
@@ -174,25 +178,28 @@
   /* ---- pillar jump-nav (aria-current, scroll-spy) ---- */
   function initPillarTabs() {
     var tabs = document.querySelectorAll(".pill[data-pillar]");
+    var now = function () { return (window.performance && performance.now) ? performance.now() : Date.now(); };
+    var clickedAt = -1e9;
+    var setCurrent = function (id) {
+      tabs.forEach(function (t) { t.setAttribute("aria-current", t.dataset.pillar === id ? "true" : "false"); });
+    };
     tabs.forEach(function (tab) {
       tab.addEventListener("click", function () {
-        tabs.forEach(function (t) { t.setAttribute("aria-current", "false"); });
-        tab.setAttribute("aria-current", "true");
+        clickedAt = now();
+        setCurrent(tab.dataset.pillar);
         var target = document.getElementById("pillar-" + tab.dataset.pillar);
         if (target) target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
       });
     });
     if ("IntersectionObserver" in window) {
+      var ratios = {};
       var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) {
-            var id = e.target.id.replace("pillar-", "");
-            tabs.forEach(function (t) {
-              t.setAttribute("aria-current", t.dataset.pillar === id ? "true" : "false");
-            });
-          }
-        });
-      }, { threshold: 0.4 });
+        entries.forEach(function (e) { ratios[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
+        if (now() - clickedAt < 800) return;          // let a tab click settle before the spy takes over
+        var bestId = null, best = 0;
+        Object.keys(ratios).forEach(function (k) { if (ratios[k] > best) { best = ratios[k]; bestId = k; } });
+        if (bestId && best > 0) setCurrent(bestId.replace("pillar-", ""));
+      }, { threshold: [0.25, 0.5, 0.75] });
       document.querySelectorAll(".pillar").forEach(function (s) { io.observe(s); });
     }
   }
@@ -254,6 +261,21 @@
     nav.insertAdjacentElement("afterend", el);
   }
 
+  /* ---- pause the partners marquees off-screen and when the tab is hidden ---- */
+  function initAnimPause() {
+    var partners = document.querySelector(".partners");
+    if (!partners) return;
+    var inView = true;
+    var apply = function () { partners.classList.toggle("anim-paused", !inView || document.hidden); };
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { inView = e.isIntersecting; });
+        apply();
+      }, { threshold: 0 }).observe(partners);
+    }
+    document.addEventListener("visibilitychange", apply);
+  }
+
   /* ---- boot ---- */
   buildPillars();
   paintStaticIcons();
@@ -264,4 +286,5 @@
   initProgress();
   initToTop();
   initTally();
+  initAnimPause();
 })();
