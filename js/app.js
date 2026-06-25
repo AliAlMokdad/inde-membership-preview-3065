@@ -120,10 +120,28 @@
           el.style.transitionDelay = Math.min(sibs * 70, 350) + "ms";
           el.classList.add("in");
           io.unobserve(el);
+          // drop the blur filter layer once the reveal finishes, so it never re-rasterises
+          // a continuously-animating child (e.g. the Living Flag) frame after frame
+          el.addEventListener("transitionend", function te(ev) {
+            if (ev.propertyName === "filter") { el.style.filter = "none"; el.removeEventListener("transitionend", te); }
+          });
         }
       });
     }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
     items.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---- futuristic seam scan: illuminate each section boundary once as it enters view ---- */
+  function initSeams() {
+    if (reduce || !("IntersectionObserver" in window)) return;
+    var secs = document.querySelectorAll(".promise, .buddy, .tiers, .finish, .partners");
+    if (!secs.length) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("seam-lit"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0, rootMargin: "0px 0px -12% 0px" });
+    secs.forEach(function (s) { io.observe(s); });
   }
 
   /* ---- word rotator ---- */
@@ -257,6 +275,7 @@
   buildPillars();
   paintStaticIcons();
   initReveal();
+  initSeams();
   initRotator();
   initNav();
   initPillarTabs();
