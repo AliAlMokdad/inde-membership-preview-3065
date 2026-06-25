@@ -100,7 +100,7 @@ body {
 }
 
 h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; font-optical-sizing: auto; line-height: 1.1; margin: 0; letter-spacing: -0.012em; }
-.svc-card h3, .tier h3, .give-card h3, .journey-step h3 { font-weight: 560; letter-spacing: -0.004em; line-height: 1.18; }
+.svc-card h3, .tier h3, .journey-step h3 { font-weight: 560; letter-spacing: -0.004em; line-height: 1.18; }
 p { margin: 0; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
@@ -381,19 +381,13 @@ html[dir="rtl"] .marquee-track { animation-direction: reverse; }
 
   .hero-grid { grid-template-columns: 1fr; }
   .hero-art { order: -1; max-width: 460px; }
-  .hero-facts { gap: 16px; }
   .pillar-head { grid-template-columns: 1fr; }
   .pillar-head-art { order: -1; }
-  .voice-grid { grid-template-columns: 1fr; }
   .foot-grid { grid-template-columns: 1fr; gap: 28px; }
 }
 
 @media (max-width: 560px) {
-  .hero-facts { grid-template-columns: 1fr; gap: 14px; border: none; padding-block-start: 8px; }
-  .hero-facts li { flex-direction: row; align-items: baseline; gap: 12px; }
-  .hero-facts strong { font-size: 30px; min-width: 3.5ch; }
   .foot-cols { grid-template-columns: 1fr; }
-  .hero-scroll { display: none; }
   .btn-lg { width: 100%; }
 }
 
@@ -411,7 +405,7 @@ html[dir="rtl"] .marquee-track { animation-direction: reverse; }
 
 /* ---- level chips (the membership ladder colour code) ---- */
 .lvl-chip, .tier-lvl { font-family: var(--font-mono); font-weight: 500; font-size: 11px; letter-spacing: .04em; padding: 4px 10px; border-radius: 100px; white-space: nowrap; display: inline-block; line-height: 1.25; }
-.lvl-free { background: var(--green-100); color: var(--green); }
+.lvl-free { background: var(--green-100); color: #2F6446; }
 .lvl-silver { background: #ECEAE6; color: #6B6259; }
 .lvl-platinum { background: var(--champagne); color: var(--bordeaux-700); }
 
@@ -457,30 +451,13 @@ html[dir="rtl"] .buddy-art img { border-radius: 80px var(--r-xl) var(--r-xl) var
 .tier-foot a { color: var(--coral-600); text-decoration: underline; text-underline-offset: 2px; }
 
 /* ============================================================
-   GIVE BACK
-   ============================================================ */
-.give { padding-block: clamp(64px, 9vw, 110px); }
-.give-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.give-card { background: var(--sand-50); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 36px 34px; box-shadow: var(--shadow-1); transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease); }
-.give-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-2); border-color: var(--line-strong); }
-@media (prefers-reduced-motion: reduce) { .give-card:hover { transform: none; } }
-.give-ico { width: 52px; height: 52px; border-radius: var(--r-md); display: grid; place-items: center; background: var(--teal-100); color: var(--teal-800); margin-block-end: 18px; }
-.give-ico .ico { width: 28px; height: 28px; }
-.give-card h3 { font-size: 24px; color: var(--teal-900); margin: 0 0 8px; }
-.give-card > p { font-size: 16px; color: var(--ink-soft); margin: 0 0 20px; }
-.give-list { display: grid; gap: 11px; margin-block-end: 26px; }
-.give-list li { display: grid; grid-template-columns: 20px 1fr; gap: 11px; align-items: start; font-size: 15px; color: var(--ink-soft); }
-.give-list .ico { width: 17px; height: 17px; color: var(--green); margin-block-start: 3px; }
-
-/* ============================================================
    FOOTER heading + vibey social
    ============================================================ */
 .foot-h { font-family: var(--font-body); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.55); margin: 0 0 14px; font-weight: 600; }
 .foot-social { display: flex; gap: 12px; margin-block-start: 20px; }
 .soc { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; color: #fff; background: var(--coral-500); transition: transform .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease); }
 .soc:hover { transform: translateY(-3px); box-shadow: 0 12px 24px -10px rgba(42,26,28,.5); background: var(--red-400); }
-@keyframes socBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-@media (prefers-reduced-motion: reduce) { .soc { animation: none; } .soc:hover { transform: scale(1.05); } }
+@media (prefers-reduced-motion: reduce) { .soc:hover { transform: none; } }
 .foot-cvr { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: rgba(255,255,255,.55); margin-block-start: 16px; }
 .tier-talk { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-faint); }
 .tier-feature .tier-talk { color: rgba(255,255,255,.82); }
@@ -489,7 +466,6 @@ html[dir="rtl"] .buddy-art img { border-radius: 80px var(--r-xl) var(--r-xl) var
 @media (max-width: 940px) {
   .buddy-grid { grid-template-columns: 1fr; }
   .buddy-art { order: -1; max-width: 480px; }
-  .give-grid { grid-template-columns: 1fr; }
 }
 
 /* ============================================================
@@ -592,23 +568,6 @@ body::before {
   background: linear-gradient(90deg, var(--red-500), var(--teal-800) 82%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-@keyframes tagShift { 0%, 100% { background-position: 0 0; } 50% { background-position: 100% 0; } }
-@media (prefers-reduced-motion: reduce) { .flag-tagline { animation: none; } }
-
-/* ============================================================
-   HERO SCROLL CUE: a glowing dot travels down, brand red
-   ============================================================ */
-.hero-scroll {
-  position: absolute; inset-block-end: clamp(12px, 2vw, 28px); inset-inline-start: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 10px; z-index: 2; text-decoration: none;
-}
-.hero-scroll .hs-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal-500); transition: color .2s var(--ease); }
-.hero-scroll:hover .hs-label { color: var(--coral-600); }
-.hero-scroll .hs-track { position: relative; width: 2px; height: 46px; border-radius: 2px; background: linear-gradient(var(--teal-500), rgba(92,22,32,0)); overflow: hidden; }
-.hero-scroll .hs-dot { position: absolute; inset-inline-start: 50%; margin-inline-start: -2.5px; top: -6px; width: 5px; height: 5px; border-radius: 50%; background: var(--coral-500); animation: scrollDot 1.9s var(--ease) infinite; }
-@keyframes scrollDot { 0% { top: -6px; opacity: 0; } 25% { opacity: 1; } 100% { top: 46px; opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .hero-scroll .hs-dot { animation: none; top: 8px; opacity: .9; } }
-@media (max-width: 760px) { .hero-scroll { display: none; } }
 
 /* ============================================================
    FINISH: closing call fused with how-it-works journey
@@ -687,16 +646,3 @@ body::before {
 }
 html[dir="rtl"] .flag-frame { border-radius: var(--r-xl) var(--r-xl) 80px var(--r-xl); }
 .flag-frame svg { display: block; width: 100%; height: 100%; }
-
-/* ============================================================
-   SERVICE TALLY (honest live-vs-building count, under pillar nav)
-   ============================================================ */
-.svc-tally {
-  margin-block-start: 20px; font-size: 14px; color: var(--ink-faint);
-  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px;
-}
-.svc-tally .t-strong { color: var(--ink); font-weight: 600; }
-.svc-tally .t-live, .svc-tally .t-building { display: inline-flex; align-items: center; gap: 7px; color: var(--ink-soft); }
-.svc-tally .t-dot { inline-size: 8px; block-size: 8px; border-radius: 50%; flex-shrink: 0; }
-.svc-tally .t-live .t-dot { background: #2e9e6b; }
-.svc-tally .t-building .t-dot { background: var(--amber-500); }

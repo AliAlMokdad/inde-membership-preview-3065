@@ -21,6 +21,9 @@
   else document.addEventListener("DOMContentLoaded", boot);
 
   function buildLivingFlag(props) {
+    var svgRoot = document.getElementById("inde-svg");
+    if (!svgRoot || svgRoot.dataset.indeBuilt) return;   // build once: a second boot would orphan nodes + leak timelines
+    svgRoot.dataset.indeBuilt = "1";
     var gsap = window.gsap;
     var SVG = "http://www.w3.org/2000/svg";
     var $ = function (id) { return document.getElementById(id); };
