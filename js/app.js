@@ -238,29 +238,6 @@
     });
   }
 
-  /* ---- honest live-vs-building tally, built from the data ---- */
-  function initTally() {
-    if (typeof PILLARS === "undefined") return;
-    var nav = document.querySelector(".pillar-nav");
-    if (!nav) return;
-    var total = 0, live = 0;
-    PILLARS.forEach(function (p) {
-      p.services.forEach(function (s) { total++; if (s.status === "live") live++; });
-    });
-    var building = total - live;
-    var el = document.createElement("p");
-    el.className = "svc-tally";
-    el.innerHTML =
-      '<span class="t-strong">' + total + " services in all</span>" +
-      '<span class="sr-only">. </span>' +
-      '<span class="t-live"><span class="t-dot" aria-hidden="true"></span>' + live + " live today</span>" +
-      '<span class="sr-only">, </span>' +
-      '<span class="t-building"><span class="t-dot" aria-hidden="true"></span>' + building + " building now</span>" +
-      '<span class="sr-only">. </span>' +
-      "<span>Each card tells you which.</span>";
-    nav.insertAdjacentElement("afterend", el);
-  }
-
   /* ---- pause the partners marquees off-screen and when the tab is hidden ---- */
   function initAnimPause() {
     var partners = document.querySelector(".partners");
@@ -285,6 +262,5 @@
   initPillarTabs();
   initProgress();
   initToTop();
-  initTally();
   initAnimPause();
 })();

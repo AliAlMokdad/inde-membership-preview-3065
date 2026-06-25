@@ -334,11 +334,12 @@
     // ---------- the flag WAKES: assemble the wordmark, hold a beat, then come alive ----------
     var Q_GROUPS = { i: $("inde-Q-i"), n: $("inde-Q-n"), d: $("inde-Q-d"), e: $("inde-Q-e") };
     if (willAnimate) {
-      // hold each quadrant at its clean resting LETTER; the wordmark blooms in, then stays still (no cartoon scenes)
+      // render each quadrant as its clean resting LETTER and keep it visible: a still, premium wordmark.
+      // No per-letter bloom (it froze mid-flight in background tabs and read as broken characters) and no cartoon scenes.
       ["i", "n", "d", "e"].forEach(function (k) {
         QUADS[k].tl.progress(0).pause();
         QUADS[k].parts.forEach(function (p) { p.m.t = 1; p.render(); gsap.set(p.sceneG, { x: 0, y: 0, rotation: 0, scaleX: 1, scaleY: 1 }); });
-        if (Q_GROUPS[k]) Q_GROUPS[k].style.opacity = "0";
+        if (Q_GROUPS[k]) { Q_GROUPS[k].style.opacity = "1"; gsap.set(Q_GROUPS[k], { opacity: 1, scale: 1 }); }
       });
     }
     var lifeStaggered = false;
@@ -351,12 +352,9 @@
     var entered = false;
     function wake() {
       if (entered) return; entered = true;
-      ["i", "n", "d", "e"].forEach(function (k, idx) {
-        var g = Q_GROUPS[k]; if (!g) return;
-        gsap.fromTo(g, { opacity: 0, scale: 0.35, svgOrigin: QUADS[k].base[0] + " " + QUADS[k].base[1] },
-          { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.7)", delay: idx * 0.14 });
-      });
-      // still mark: the wordmark blooms in and holds. No cartoon scenes (design audit, "pro not cheap").
+      // the wordmark is already rendered as a still mark; just guarantee it is visible. The only entrance
+      // is the gentle CSS scale-settle on .flag-frame, which cannot freeze or break regardless of tab state.
+      ["i", "n", "d", "e"].forEach(function (k) { var g = Q_GROUPS[k]; if (g) { g.style.opacity = "1"; gsap.set(g, { opacity: 1, scale: 1 }); } });
     }
 
     // ---------- view-gated: wake on first view, pause when off-screen (perf + battery) ----------
