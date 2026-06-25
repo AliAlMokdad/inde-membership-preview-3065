@@ -407,13 +407,7 @@ html[dir="rtl"] .marquee-track { animation-direction: reverse; }
 /* ---- animated InDe logo (the real 2x2 tiles, given vibe) ---- */
 .inde-logo { display: inline-flex; }
 .inde-logo svg { display: block; overflow: visible; }
-.inde-logo .lt { transform-box: fill-box; transform-origin: 50% 50%; animation: tilePop .6s var(--ease) backwards; }
-.inde-logo .lt1 { animation-delay: .05s; }
-.inde-logo .lt2 { animation-delay: .12s; }
-.inde-logo .lt3 { animation-delay: .19s; }
-.inde-logo .lt4 { animation-delay: .26s; }
-@keyframes tilePop { 0% { opacity: 0; transform: scale(.3) translateY(-3px); } 70% { opacity: 1; transform: scale(1.12); } 100% { opacity: 1; transform: scale(1); } }
-@media (prefers-reduced-motion: reduce) { .inde-logo .lt { animation: none !important; } }
+.inde-logo .lt { transform-box: fill-box; transform-origin: 50% 50%; }
 
 /* ---- level chips (the membership ladder colour code) ---- */
 .lvl-chip, .tier-lvl { font-family: var(--font-mono); font-weight: 500; font-size: 11px; letter-spacing: .04em; padding: 4px 10px; border-radius: 100px; white-space: nowrap; display: inline-block; line-height: 1.25; }
@@ -678,13 +672,7 @@ body::before {
   box-shadow: var(--shadow-2); background: #F11414;
 }
 html[dir="rtl"] .flag-frame { border-radius: var(--r-xl) var(--r-xl) 80px var(--r-xl); }
-/* the flag settles into place as the hero reveals */
-.hero-art.reveal .flag-frame { transform: scale(0.965); transition: transform 1s var(--ease); }
-.hero-art.reveal.in .flag-frame { transform: scale(1); }
 .flag-frame svg { display: block; width: 100%; height: 100%; }
-@media (prefers-reduced-motion: reduce) {
-  .hero-art.reveal .flag-frame, .hero-art.reveal.in .flag-frame { transform: none !important; transition: none; }
-}
 
 /* ============================================================
    SERVICE TALLY (honest live-vs-building count, under pillar nav)
