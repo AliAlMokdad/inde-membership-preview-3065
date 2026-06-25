@@ -199,7 +199,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* desktop: let the flag breathe and take space toward the page edge, not boxed in the middle */
 @media (min-width: 941px) {
   .hero { padding-block: clamp(60px, 8vw, 108px) clamp(52px, 7vw, 96px); }
-  .hero-grid { grid-template-columns: 0.9fr 1.1fr; gap: clamp(44px, 5.5vw, 96px); }
+  .hero-grid { grid-template-columns: 0.8fr 1.2fr; gap: clamp(44px, 5.5vw, 96px); }
   .hero-art { margin-inline-end: clamp(-80px, -4.5vw, -28px); }
 }
 
@@ -680,6 +680,68 @@ body::before {
 .site-foot::before {
   content: ""; position: absolute; inset-inline: 0; inset-block-start: -40px; height: 40px; pointer-events: none;
   background: linear-gradient(180deg, rgba(42,26,28,0), rgba(42,26,28,0.06));
+}
+
+/* ============================================================
+   FLAG TAGLINE: "Internationals of Denmark", bigger + vibey
+   ============================================================ */
+.flag-tagline {
+  margin-block-start: clamp(20px, 2.6vw, 34px); text-align: center;
+  font-family: var(--font-mono); font-weight: 500; text-transform: uppercase;
+  letter-spacing: 0.34em; font-size: clamp(15px, 1.8vw, 22px); padding-inline-start: 0.34em;
+  background: linear-gradient(90deg, var(--red-500), var(--teal-800) 78%);
+  background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: tagShift 9s ease-in-out infinite;
+}
+@keyframes tagShift { 0%, 100% { background-position: 0 0; } 50% { background-position: 100% 0; } }
+@media (prefers-reduced-motion: reduce) { .flag-tagline { animation: none; } }
+
+/* ============================================================
+   HERO SCROLL CUE: a glowing dot travels down, brand red
+   ============================================================ */
+.hero-scroll {
+  position: absolute; inset-block-end: clamp(12px, 2vw, 28px); inset-inline-start: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 10px; z-index: 2; text-decoration: none;
+}
+.hero-scroll .hs-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal-500); transition: color .2s var(--ease); }
+.hero-scroll:hover .hs-label { color: var(--coral-600); }
+.hero-scroll .hs-track { position: relative; width: 2px; height: 46px; border-radius: 2px; background: linear-gradient(var(--coral-500), rgba(200,16,46,0)); overflow: hidden; }
+.hero-scroll .hs-dot { position: absolute; inset-inline-start: 50%; margin-inline-start: -3px; top: -6px; width: 6px; height: 6px; border-radius: 50%; background: var(--coral-500); box-shadow: 0 0 9px rgba(200,16,46,.7); animation: scrollDot 1.9s var(--ease) infinite; }
+@keyframes scrollDot { 0% { top: -6px; opacity: 0; } 25% { opacity: 1; } 100% { top: 46px; opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .hero-scroll .hs-dot { animation: none; top: 8px; opacity: .9; } }
+@media (max-width: 760px) { .hero-scroll { display: none; } }
+
+/* ============================================================
+   FINISH: closing call fused with how-it-works journey
+   ============================================================ */
+.finish { padding-block: clamp(72px, 10vw, 130px); position: relative; }
+.finish-head { max-width: 60ch; margin-block-end: clamp(48px, 6vw, 84px); }
+.finish-head h2 { font-size: clamp(32px, 5vw, 56px); color: var(--teal-900); margin: 0 0 22px; }
+.finish-lede { font-size: clamp(17px, 1.8vw, 21px); color: var(--ink-soft); margin: 0 0 32px; max-width: 54ch; }
+.finish-cta { display: flex; flex-wrap: wrap; gap: 14px; }
+.finish-steps-label { font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--teal-500); margin: 0 0 30px; }
+.journey { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; position: relative; }
+.journey::before {
+  content: ""; position: absolute; inset-block-start: 28px; inset-inline: 11%; height: 2px; pointer-events: none;
+  background: linear-gradient(90deg, var(--coral-500), var(--teal-300), var(--coral-500));
+  background-size: 200% 100%; opacity: .45; animation: lineflow 7s linear infinite;
+}
+@keyframes lineflow { to { background-position: 200% 0; } }
+.journey-step { position: relative; }
+.js-num {
+  width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--coral-500); color: #fff; font-family: var(--font-display); font-weight: 600; font-size: 23px;
+  margin-block-end: 20px; position: relative; z-index: 1; box-shadow: 0 10px 22px -10px rgba(200,16,46,.6);
+  transition: transform .3s var(--ease);
+}
+.journey-step:hover .js-num { transform: translateY(-5px) scale(1.06); }
+.journey-step h3 { font-size: 20px; color: var(--teal-900); margin: 0 0 8px; }
+.journey-step p { font-size: 15px; color: var(--ink-soft); }
+@media (prefers-reduced-motion: reduce) { .journey::before { animation: none; } .journey-step:hover .js-num { transform: none; } }
+@media (max-width: 760px) {
+  .journey { grid-template-columns: 1fr; gap: 22px; }
+  .journey::before { display: none; }
+  .js-num { width: 48px; height: 48px; font-size: 20px; margin-block-end: 12px; }
 }
 
 /* ============================================================
