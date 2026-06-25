@@ -68,6 +68,7 @@
             '<p class="svc-get">' + s.get + "</p>" +
             '<div class="svc-meta">' +
               metaRow("user-check", "Who it is for", s.who) +
+              metaRow("route", "How it runs", s.format) +
               metaRow("hand-heart", "Delivered by", s.delivery) +
             "</div>" +
           "</article>"
